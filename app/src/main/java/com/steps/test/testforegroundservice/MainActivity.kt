@@ -6,13 +6,16 @@ import android.app.PendingIntent
 import android.app.job.JobInfo
 import android.app.job.JobScheduler
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.provider.Settings
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationManagerCompat
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -24,6 +27,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         findViewById<Button>(R.id.btn_click).setOnClickListener { startForegroundService() }
         findViewById<Button>(R.id.btn_click_fix).setOnClickListener { startForegroundService(true) }
+        if(!checkIsNotifyEnabled(this)){
+            openNotify()
+        }
+    }
+
+    fun checkIsNotifyEnabled(context: Context?): Boolean {
+        val managerCompat = NotificationManagerCompat.from(context!!)
+        return managerCompat.areNotificationsEnabled()
+    }
+
+    fun hasNotifyPerm(context: Context?): Boolean {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.O || checkIsNotifyEnabled(context)
+    }
+
+    fun openNotify(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val intent = Intent()
+            intent.action = Settings.ACTION_APP_NOTIFICATION_SETTINGS
+            intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName())
+            startActivity(intent)
+        }
     }
 
     private fun startForegroundService(fix: Boolean = false) {

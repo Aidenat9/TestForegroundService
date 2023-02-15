@@ -12,14 +12,12 @@
         android:id="@+id/btn_click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="模拟先退后台再启动前台服务"
-        android:textColor="@color/white" />
+        android:text="模拟先退后台再启动前台服务"/>
     <Button
         android:id="@+id/btn_click_fix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="模拟先退后台再启动前台服务(修复版)"
-        android:textColor="@color/white" />
+        android:text="模拟先退后台再启动前台服务(修复版)" />
 
     <TextView
         android:id="@+id/tv"

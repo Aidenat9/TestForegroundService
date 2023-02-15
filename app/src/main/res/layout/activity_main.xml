@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="模拟先退后台再启动前台服务"
+        android:textColor="@color/white" />
+    <Button
+        android:id="@+id/btn_click_fix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="模拟先退后台再启动前台服务(修复版)"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="log用 testforeground 筛选，可看到抛出了ForegroundServiceStartNotAllowedException然后catch住后，再发精确闹钟启动前台服务，服务启动成功！" />
+
+</LinearLayout>
